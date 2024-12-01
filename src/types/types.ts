@@ -18,3 +18,11 @@ export interface IBlog {
 	author: string;
 	author_img: StaticImageData;
 }
+
+export interface IDataState {
+	title: string;
+	description: string;
+	category: string;
+	author: string;
+	authorImg: string;
+}
