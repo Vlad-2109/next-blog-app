@@ -13,8 +13,13 @@ export interface BlogTableItemProps {
 	authorImg: string;
 	title: string;
 	author: string;
-	date: string;
+	date: Date;
 	deleteBlog: (mongoId: string) => void;
+}
+
+export interface SubsTableItemProps {
+	email: IEmail;
+	deleteEmail: (mongoId: string) => void;
 }
 
 export interface IBlog {
@@ -25,7 +30,14 @@ export interface IBlog {
 	author: string;
 	image: string;
 	authorImg: string;
-	date: string;
+	date: Date;
+	__v: number;
+}
+
+export interface IEmail {
+	_id: string;
+	email: string;
+	date: Date;
 	__v: number;
 }
 
