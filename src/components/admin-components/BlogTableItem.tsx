@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { assets } from '@/assets/assets';
 import { BlogTableItemProps } from '@/types/types';
 
-const BlogTableItem: React.FC<BlogTableItemProps> = ({ authorImg, title, author, date }) => {
+const BlogTableItem: React.FC<BlogTableItemProps> = ({ mongoId, authorImg, title, author, date, deleteBlog }) => {
 
     const blogDate = new Date(date);
 
@@ -22,7 +22,7 @@ const BlogTableItem: React.FC<BlogTableItemProps> = ({ authorImg, title, author,
 			</td>
 			<td className="px-6 py-4">{title ? title : 'no title'}</td>
 			<td className="px-6 py-4">{blogDate.toDateString()}</td>
-			<td className="px-6 py-4 cursor-pointer">x</td>
+			<td className="px-6 py-4 cursor-pointer" onClick={() => deleteBlog(mongoId)}>x</td>
 		</tr>
 	);
 };

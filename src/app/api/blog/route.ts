@@ -1,6 +1,7 @@
 import { connectDB } from '@/lib/config/db';
 import { NextResponse } from 'next/server';
 import { writeFile } from 'fs/promises';
+import fs from 'fs';
 import BlogModel from '@/lib/models/blog.model';
 
 const LoadDB = async () => {
@@ -52,4 +53,14 @@ export async function POST(request: Request) {
 	} else {
 		return NextResponse.json({ error: 'Invalid image file' }, { status: 400 });
 	}
+}
+
+// API Endpoint to delete blog
+
+export async function DELETE(request: any) {
+	const id = request.nextUrl.searchParams.get("id");
+	const blog = await BlogModel.findById(id);
+	fs.unlink(`./public/${blog.image}`, () => { });
+	await BlogModel.findByIdAndDelete(id);
+	return NextResponse.json({ message: "Blog Deleted" });
 }

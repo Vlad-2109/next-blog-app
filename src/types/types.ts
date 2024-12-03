@@ -9,10 +9,12 @@ export interface BlogItemProps {
 }
 
 export interface BlogTableItemProps {
+	mongoId: string;
 	authorImg: string;
 	title: string;
 	author: string;
 	date: string;
+	deleteBlog: (mongoId: string) => void;
 }
 
 export interface IBlog {
